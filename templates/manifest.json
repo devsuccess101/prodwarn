@@ -6,7 +6,7 @@
 
   "browser_action": {
     "default_icon": "static/images/logo-48.png",
-    "default_popup": "index.html"
+    "default_popup": "popup/index.html"
   },
 
   "icons": {
