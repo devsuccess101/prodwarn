@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin'); // eslint-disable-line
+const CopyWebpackPlugin = require('copy-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
 
 const pkg = require('../package.json');
 const manifestTemplate = require('../templates/manifest.json');

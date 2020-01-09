@@ -1,7 +1,7 @@
 const { resolve } = require('path');
-const HtmlPlugin = require('html-webpack-plugin'); // eslint-disable-line
-const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // eslint-disable-line
-const VueLoaderPlugin = require('vue-loader/lib/plugin'); // eslint-disable-line
+const HtmlPlugin = require('html-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // eslint-disable-line import/no-extraneous-dependencies
+const VueLoaderPlugin = require('vue-loader/lib/plugin'); // eslint-disable-line import/no-extraneous-dependencies
 
 const devMode = process.env.NODE_ENV !== 'production';
 
