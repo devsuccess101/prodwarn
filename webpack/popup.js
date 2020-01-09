@@ -58,14 +58,19 @@ module.exports = {
         ],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        test: /\.(eot|ttf|woff|woff2)(\?\S*)?$/,
         loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]?[hash]',
+          esModule: false,
+        },
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
           name: 'img/[name].[ext]?[hash]',
+          esModule: false,
         },
       },
     ],
