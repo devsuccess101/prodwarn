@@ -1,7 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { resolve } = require('path');
-const HtmlPlugin = require('html-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
-const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // eslint-disable-line import/no-extraneous-dependencies
-const VueLoaderPlugin = require('vue-loader/lib/plugin'); // eslint-disable-line import/no-extraneous-dependencies
+const HtmlPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { EnvironmentPlugin } = require('webpack');
+
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
+const package = require('../package.json');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -50,11 +56,21 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.[s|a]?css$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           'css-loader',
           'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                tailwindcss,
+                autoprefixer,
+              ],
+            },
+          },
         ],
       },
       {
@@ -62,6 +78,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: 'fonts/[name].[ext]?[hash]',
+          publicPath: '../',
           esModule: false,
         },
       },
@@ -77,6 +94,11 @@ module.exports = {
   },
 
   plugins: [
+    new EnvironmentPlugin({
+      PACKAGE_NAME: package.name,
+      PACKAGE_VERSION: package.version,
+    }),
+
     new VueLoaderPlugin(),
 
     new MiniCssExtractPlugin({
