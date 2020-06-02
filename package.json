@@ -1,7 +1,7 @@
 {
   "name": "prodwarn",
   "displayName": "Production Environment Warning",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack -w --hide-modules",
