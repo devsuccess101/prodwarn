@@ -1,8 +1,8 @@
 <template>
-  <div class="layout layout-default">
+  <div class="h-full flex flex-col">
     <Header />
 
-    <el-main>
+    <el-main class="flex-1 m-0 p-0 bg-gray-200">
       <router-view />
     </el-main>
 

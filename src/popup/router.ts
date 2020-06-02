@@ -5,6 +5,8 @@ import DefaultLayout from './layouts/default.vue';
 
 // Pages
 import HomePage from './pages/index.vue';
+import AddSitePage from './pages/add-site.vue';
+import EditSitePage from './pages/edit-site.vue';
 import AboutPage from './pages/about.vue';
 
 const routes = [
@@ -15,6 +17,20 @@ const routes = [
       {
         path: '/',
         component: HomePage,
+      },
+      {
+        path: '/add-site',
+        component: AddSitePage,
+        meta: {
+          title: 'Add site',
+        },
+      },
+      {
+        path: '/edit-site/:site',
+        component: EditSitePage,
+        meta: {
+          title: 'Edit site',
+        },
       },
       {
         path: '/about',

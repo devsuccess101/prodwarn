@@ -17,9 +17,14 @@
             <span>Home</span>
           </el-menu-item>
 
+          <el-menu-item index="/add-site" @click="drawer = false">
+            <i class="el-icon-circle-plus-outline"></i>
+            <span>Add Site</span>
+          </el-menu-item>
+
           <el-menu-item index="/about" @click="drawer = false">
             <i class="el-icon-info"></i>
-            <span>About us</span>
+            <span>About Us</span>
           </el-menu-item>
         </el-menu>
       </slot>

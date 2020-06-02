@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article class="p-4">
     <h2 class="font-semibold my-2">Don't test in production?</h2>
 
     <p class="my-2">
