@@ -10,8 +10,6 @@ Let feel free to contribute or send us your feedback!
 
 ## Features
 
-**v0.3.0:**
-
 - Add/Edit/Delete a protected site that should be shown the warning message
 - Auto fill current site when adding protected site
 - Manage protected sites with Group and Site name
