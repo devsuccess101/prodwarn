@@ -13,7 +13,6 @@
     "core-js": "^3.4.3",
     "element-ui": "^2.13.0",
     "idb": "^5.0.4",
-    "load-style": "^1.0.0",
     "lodash": "^4.17.15",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",

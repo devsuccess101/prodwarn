@@ -5859,11 +5859,6 @@ load-json-file@^2.0.0:
     pify "^2.0.0"
     strip-bom "^3.0.0"
 
-load-style@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/load-style/-/load-style-1.0.0.tgz#113eef4e08b119850dd50f93a91355e54eb16971"
-  integrity sha1-ET7vTgixGYUN1Q+TqRNV5U6xaXE=
-
 loader-fs-cache@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/loader-fs-cache/-/loader-fs-cache-1.0.3.tgz#f08657646d607078be2f0a032f8bd69dd6f277d9"
