@@ -29,7 +29,7 @@ export default class AddSitePage extends Vue {
   async beforeMount() {
     if (this.$route.params.site) {
       const db = await openDB(DB_NAME, DB_VERSION);
-      const site = db.get(DB_TABLE_SITES, this.$route.params.site);
+      const site = await db.get(DB_TABLE_SITES, this.$route.params.site);
 
       this.site = site;
     }

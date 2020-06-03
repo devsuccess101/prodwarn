@@ -101,6 +101,14 @@ export default class SiteForm extends Vue {
   }
 
   beforeMount() {
+    if (!this.site) {
+      this.fetchNewSiteInfo();
+    } else {
+      this.form = _assign({}, this.site);
+    }
+  }
+
+  fetchNewSiteInfo() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const currentTabID = _get(tabs, '0.id');
       const message = { command: GET_PAGE_INFO };
