@@ -2,7 +2,13 @@
   "name": "prodwarn",
   "displayName": "Production Environment Warning",
   "version": "0.3.0",
-  "private": true,
+  "private": false,
+  "author": {
+    "email": "kimnguyen.ict@gmail.com",
+    "name": "Kim Nguyen",
+    "url": "https://github.com/kimyvgy"
+  },
+  "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack -w --hide-modules",
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
