@@ -102,6 +102,7 @@ export default class FloatMessage extends Vue {
         color: #fff;
         font-size: $minimizedFontSize;
         font-weight: bold;
+        cursor: pointer;
       }
     }
   }
