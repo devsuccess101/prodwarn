@@ -34,6 +34,9 @@
 import _get from 'lodash/get';
 import _assign from 'lodash/assign';
 import _isString from 'lodash/isString';
+import _startsWith from 'lodash/startsWith';
+import _trimStart from 'lodash/trimStart';
+
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { GET_PAGE_INFO } from '@/types';
 import { ElForm } from 'element-ui/types/form'; // eslint-disable-line
@@ -115,18 +118,33 @@ export default class SiteForm extends Vue {
 
       chrome.tabs.sendMessage(currentTabID, message, (response) => {
         const location: Location | null = _get(response, 'location');
+        const faviconURL: string | null = _get(response, 'faviconURL');
 
         if (location) {
-          this.fillData(location);
+          const normalizedFavicon = (): string | null => {
+            if (!faviconURL) return null;
+
+            if (_startsWith(faviconURL, '//')) {
+              return `https://${faviconURL}`;
+            }
+
+            if (/^(\/{1})?/.test(faviconURL)) {
+              return `${location.origin}/${_trimStart(faviconURL, '/')}`;
+            }
+
+            return faviconURL;
+          };
+
+          this.fillData(location, { faviconURL: normalizedFavicon() });
         }
       });
     });
   }
 
-  fillData(location: Location) {
+  fillData(location: Location, externalData = {}) {
     const { host, origin } = location;
 
-    this.form = _assign({}, this.form, {
+    this.form = _assign({}, this.form, externalData || {}, {
       host,
       name: host,
       group: host,

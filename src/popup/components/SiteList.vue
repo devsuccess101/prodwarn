@@ -4,7 +4,7 @@
       <el-collapse-item
         v-for="(sites, group) in dataSource"
         :key="group"
-        :title="group || 'Unnamed'"
+        :title="`${group || 'Unnamed'} (${sites.length})`"
         :name="group"
         class="protected-site-item"
       >
@@ -12,21 +12,24 @@
           v-for="(site, index) in sites"
           :key="index"
           class="flex px-4 py-2 justify-between items-center"
+          style="border-bottom: solid 1px #e2e8f0;"
         >
           <div>
             <h4 class="text-black">
-              <i class="el-icon-link" />
+              <i v-if="!site.faviconURL" class="el-icon-link" />
+              <img v-else :src="site.faviconURL" class="inline-block h-5 w-5 mr-1" />
+
               {{ site.name }}
             </h4>
             <span class="text-gray-700">
-              {{ `https://${site.host}` }}
+              {{ site.url }}
             </span>
           </div>
 
           <el-dropdown trigger="click">
             <el-button
               icon="el-icon-more transform rotate-90"
-              class="border-0 px-2"
+              class="border-0 pl-2"
               circle
             />
 

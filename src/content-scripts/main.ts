@@ -1,4 +1,5 @@
 import _get from 'lodash/get';
+import _find from 'lodash/find';
 import { CHECK_PRODUCTION, GET_PAGE_INFO } from '@/types';
 
 import Vue from 'vue';
@@ -28,5 +29,16 @@ chrome.runtime.onMessage.addListener((message, _, sendResponse) => {
 
   if (!isGetPageInfo) return undefined;
 
-  return sendResponse({ location: window.location });
+  const nodeList = document.getElementsByTagName('link');
+  const favicon = _find(nodeList, (element) => {
+    const isFavicon = element.getAttribute('rel') === 'icon'
+      || element.getAttribute('rel') === 'shortcut icon';
+
+    return isFavicon;
+  });
+
+  return sendResponse({
+    faviconURL: favicon ? favicon.getAttribute('href') : null,
+    location: window.location,
+  });
 });
