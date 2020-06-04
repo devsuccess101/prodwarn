@@ -16,8 +16,11 @@
         >
           <div>
             <h4 class="text-black">
-              <i v-if="!site.faviconURL" class="el-icon-link" />
-              <img v-else :src="site.faviconURL" class="inline-block h-5 w-5 mr-1" />
+              <img
+                :src="site.faviconURL || emptyFileSVG"
+                class="inline-block h-4 w-4 mr-1"
+                @error="onFaviconError"
+              />
 
               {{ site.name }}
             </h4>
@@ -51,13 +54,20 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import emptyFileSVG from '@/popup/assets/images/empty-file.svg';
 
 @Component
 export default class SiteList extends Vue {
   @Prop({ default: () => ({ hello: true }) })
   dataSource!: object;
 
+  emptyFileSVG: string = emptyFileSVG;
+
   activeNames: string[] = ['localhost'];
+
+  onFaviconError = (event: any) => {
+    event.target.setAttribute('src', this.emptyFileSVG);
+  }
 }
 </script>
 
