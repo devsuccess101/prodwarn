@@ -10,10 +10,40 @@ Let feel free to contribute or send us your feedback!
 
 ## Features
 
-- Add/Edit/Delete a protected site that should be shown the warning message
-- Auto fill current site when adding protected site
-- Manage protected sites with Group and Site name
-- Multiple strategy for warning (WIP):
-  + Float Message (default) (added)
-  + Dialog (WIP)
-  + Watermark
+- [x] Add/Edit/Delete a protected site that should be shown the warning message
+- [x] Auto fill current site when adding protected site
+- [x] Manage protected sites with Group and Site name
+- [x] Search protected sites by name, host
+- [] Whitelist warning for page
+- [] Multiple strategy for warning:
+  - [x] Float Message (default) (added)
+  - [] Dialog (WIP)
+  - [] Watermark
+
+## Contribute
+
+If you want to contribute for us, please follow this guide:
+
+1. Clone source code from Github:
+
+```bash
+git clone git@github.com:kimyvgy/prodwarn.git
+```
+
+2. Install Node.js dependencies, we are using Yarn instead of NPM:
+
+```bash
+yarn install
+```
+
+3. Start dev mode, enjoin :D
+
+Build the source: 3 in 1 (popup, content-script, background-script)
+
+```bash
+yarn start
+```
+
+Finnaly, turn of developer mode in your browser then load unpacked extension with path to `/prodwarn/dist` folder.
+
+Enjoin! :D
