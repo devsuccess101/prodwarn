@@ -120,6 +120,7 @@ export default class FloatMessage extends Vue {
     &-minimized {
       cursor: pointer;
       position: fixed;
+      z-index: 999999999;
       animation: shake 0.82s ease infinite;
       img {
         filter: drop-shadow(0 0 6px rgba(0,0,0,0.3));
