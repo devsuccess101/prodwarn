@@ -1,10 +1,10 @@
 <template>
   <el-footer height="50px" class="flex items-center justify-between text-xs text-gray-700">
     <a target="_blank" href="https://github.com/kimyvgy/prodwarn" class="hover:text-blue-600">
-      <i class="el-icon-link" />
-      <span>Find us on Github</span>
+      <i class="el-icon-star-on" />
+      <span>Star on Github</span>
     </a>
-    <span>Current version: {{ packageVersion }}</span>
+    <span>Prodwarn v{{ packageVersion }}</span>
   </el-footer>
 </template>
 

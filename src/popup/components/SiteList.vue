@@ -1,87 +1,105 @@
 <template>
   <section class="section-protected-sites">
-    <el-collapse v-model="activeNames" class="bg-white shadow-md">
+    <el-collapse
+      v-if="groupMode"
+      v-model="activeNames"
+      class="bg-white shadow-md"
+      accordion
+      @change="onChange"
+    >
       <el-collapse-item
-        v-for="(sites, group) in dataSource"
+        v-for="(sites, group) in sitesByGroup"
         :key="group"
-        :title="`${group || 'Unnamed'} (${sites.length})`"
         :name="group"
-        class="protected-site-item"
+        class="protected-site-group"
       >
-        <div
+        <template slot="title">
+          <SiteGroupTitle
+            :group="group"
+            :sites="sites"
+            @remove-group="$emit('remove-group', $event)"
+          />
+        </template>
+
+        <SiteListItem
           v-for="(site, index) in sites"
           :key="index"
-          class="flex px-4 py-2 justify-between items-center"
-          style="border-bottom: solid 1px #e2e8f0;"
-        >
-          <div>
-            <h4 class="text-black">
-              <img
-                :src="site.faviconURL || emptyFileSVG"
-                class="inline-block h-4 w-4 mr-1"
-                @error="onFaviconError"
-              />
-
-              {{ site.name }}
-            </h4>
-            <span class="text-gray-700">
-              {{ site.url }}
-            </span>
-          </div>
-
-          <el-dropdown trigger="click">
-            <el-button
-              icon="el-icon-more transform rotate-90"
-              class="border-0 pl-2"
-              circle
-            />
-
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @click.native="$router.push(`/edit-site/${site.host}`)">
-                Edit
-              </el-dropdown-item>
-
-              <el-dropdown-item @click.native="$emit('remove', { site, index })">
-                Remove
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </div>
+          :site="site"
+          @remove="$emit('remove', $event)"
+        />
       </el-collapse-item>
     </el-collapse>
+
+    <div v-else class="bg-white shadow-md">
+      <SiteListItem
+        v-for="(site, index) in dataSource"
+        :key="index"
+        :site="site"
+        @remove="$emit('remove', $event)"
+      />
+    </div>
   </section>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import _groupBy from 'lodash/groupBy';
 import emptyFileSVG from '@/popup/assets/images/empty-file.svg';
 
-@Component
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import SiteListItem from '@/popup/components/SiteListItem.vue';
+import SiteGroupTitle from '@/popup/components/SiteGroupTitle.vue';
+
+@Component({
+  components: {
+    SiteListItem,
+    SiteGroupTitle,
+  },
+})
 export default class SiteList extends Vue {
-  @Prop({ default: () => ({ hello: true }) })
-  dataSource!: object;
+  @Prop({ default: () => [] })
+  dataSource!: Array<object>;
 
-  emptyFileSVG: string = emptyFileSVG;
+  @Prop({ default: true })
+  groupMode!: boolean;
 
-  activeNames: string[] = ['localhost'];
+  activeNames: string[] = [];
 
-  onFaviconError = (event: any) => {
-    event.target.setAttribute('src', this.emptyFileSVG);
+  get sitesByGroup(): object {
+    return _groupBy(this.dataSource, 'group');
+  }
+
+  created() {
+    const cached = localStorage.getItem('expanedGroups');
+
+    if (cached) {
+      this.activeNames = JSON.parse(cached);
+    }
+  }
+
+  onChange = (data: Array<string>) => {
+    localStorage.setItem('expanedGroups', JSON.stringify(data));
   }
 }
 </script>
 
 <style lang="scss">
-  .protected-site-item {
-    .el-collapse-item__header {
-      padding-left: 1rem;
-      padding-right: 1rem;
-      &.is-active {
-        border-bottom: solid 1px #73d47b;
+  .protected-site-group {
+    .el-collapse-item {
+      &__header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        &.is-active {
+          border-bottom: solid 1px #73d47b;
+        }
       }
-    }
-    .el-collapse-item__content {
-      padding-bottom: 0;
+
+      &__content {
+        padding-bottom: 0;
+      }
+
+      &__arrow {
+        display: none;
+      }
     }
   }
 </style>

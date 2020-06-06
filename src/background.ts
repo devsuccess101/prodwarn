@@ -12,6 +12,7 @@ const migrateDB = (): void => {
       const sites = db.createObjectStore(DB_TABLE_SITES, { keyPath: 'host' });
       const whitelists = db.createObjectStore(DB_TABLE_WHITELISTS, { keyPath: 'url' });
 
+      sites.createIndex('group', 'group', { unique: false });
       sites.createIndex('host', 'host', { unique: true });
       whitelists.createIndex('url', 'url', { unique: true });
     },

@@ -29,13 +29,10 @@ chrome.runtime.onMessage.addListener((message, _, sendResponse) => {
 
   if (!isGetPageInfo) return undefined;
 
-  const nodeList = document.getElementsByTagName('link');
-  const favicon = _find(nodeList, (element) => {
-    const isFavicon = element.getAttribute('rel') === 'icon'
-      || element.getAttribute('rel') === 'shortcut icon';
-
-    return isFavicon;
-  });
+  const favicon: Element | null = document.querySelector('link[rel="mask-icon"]')
+    || document.querySelector('link[rel="alternate icon"]')
+    || document.querySelector('link[rel="icon"]')
+    || document.querySelector('link[rel="shortcut icon"]');
 
   return sendResponse({
     faviconURL: favicon ? favicon.getAttribute('href') : null,

@@ -1,9 +1,24 @@
 <template>
   <div
+    v-if="isMinimized"
+    :class="{
+      'prodwarn-float-message-minimized': true,
+      'prodwarn-float-message-minimized--bottom': true,
+    }"
+    :title="message"
+    @click="toggleMinimize"
+  >
+    <img
+      src="https://images.viblo.asia/64x-/9cd6ae80-2ec5-4382-99b4-87e8b7ca4b1e.png"
+      class="prodwarn-float-message-icon"
+    />
+  </div>
+
+  <div
+    v-else
     :class="{
       'prodwarn-float-message': true,
-      'prodwarn-float-message-bottom': true,
-      'prodwarn-float-message-minimized': isMinimized,
+      'prodwarn-float-message--bottom': true,
     }"
   >
     <div v-if="!isMinimized" class="prodwarn-float-message-body">
@@ -17,15 +32,6 @@
         X
       </button>
     </div>
-
-    <button
-      v-else
-      class="prodwarn-float-message-restore"
-      title="Show detail"
-      @click="toggleMinimize"
-    >
-      &#9888;
-    </button>
   </div>
 </template>
 
@@ -55,18 +61,18 @@ export default class FloatMessage extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  $minimizedSize: 45px;
-  $minimizedFontSize: 30px;
-
   .prodwarn-float-message {
     position: fixed;
     left: 0;
     width: 100%;
     z-index: 999999;
-    padding: 1rem 2rem;
+    padding: 1rem;
     background: #f82f25;
     color: #fff;
     box-shadow: 0 1px 5px 5px rgba(0, 0, 0, 0.2);
+    @media screen and (max-width: 1400px) {
+      padding: 0.2rem 1rem;
+    }
     &-body {
       font-size: 20px;
     }
@@ -81,28 +87,49 @@ export default class FloatMessage extends Vue {
       cursor: pointer;
     }
 
-    &-bottom {
+    &--bottom {
       bottom: 0;
+      left: 0;
     }
 
     &-top {
       top: 0;
+      left: 0;
+    }
+  }
+
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
     }
 
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  .prodwarn-float-message {
     &-minimized {
-      width: $minimizedSize;
-      height: $minimizedSize;
-      padding: 0;
-      .prodwarn-float-message-restore {
-        border: none;
-        outline: none;
-        width: $minimizedSize;
-        height: $minimizedSize;
-        background: #f82f25;
-        color: #fff;
-        font-size: $minimizedFontSize;
-        font-weight: bold;
-        cursor: pointer;
+      cursor: pointer;
+      position: fixed;
+      animation: shake 0.82s ease infinite;
+      img {
+        filter: drop-shadow(0 0 6px rgba(0,0,0,0.3));
+        @media screen and (max-width: 1400px) {
+          width: 40px;
+        }
+      }
+      &--bottom {
+        bottom: 20px;
+        left: 20px;
       }
     }
   }

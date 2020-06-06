@@ -2,7 +2,7 @@
   <el-header class="flex items-center bg-gray-800">
     <el-button
       type="text"
-      class="outline-none px-3 -ml-3 mr-2"
+      class="outline-none focus:outline-none px-3 -ml-3 mr-2"
       icon="el-icon-s-unfold text-2xl text-white"
       @click="drawer = true"
     />

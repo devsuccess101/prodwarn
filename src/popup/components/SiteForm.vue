@@ -1,15 +1,19 @@
 <template>
   <el-form ref="form" :model="form" :rules="rules" size="small">
     <el-form-item label="Site URL:" prop="url">
-      <el-input v-model="form.url" placeholder="https://..." @change="onChangeURL" />
+      <el-input
+        v-model.trim="form.url"
+        placeholder="https://..."
+        @change="onChangeURL"
+      />
     </el-form-item>
 
     <el-form-item label="Site Name:" prop="name">
-      <el-input v-model="form.name" />
+      <el-input v-model.trim="form.name" />
     </el-form-item>
 
     <el-form-item label="Group:" prop="group">
-      <el-input v-model="form.group" />
+      <el-input v-model.trim="form.group" />
     </el-form-item>
 
     <el-form-item>
@@ -45,6 +49,7 @@ interface SiteFormData {
   url?: string;
   name?: string;
   group?: string;
+  faviconURL?: string;
 }
 
 interface Location {
@@ -128,7 +133,7 @@ export default class SiteForm extends Vue {
               return `https://${faviconURL}`;
             }
 
-            if (/^(\/{1})?/.test(faviconURL)) {
+            if (!/^http[s]?:\/\//.test(faviconURL) && /^(\/{1})?/.test(faviconURL)) {
               return `${location.origin}/${_trimStart(faviconURL, '/')}`;
             }
 
@@ -157,7 +162,7 @@ export default class SiteForm extends Vue {
 
     if (!location) return;
 
-    this.fillData(location);
+    this.fillData(location, { faviconURL: null });
   }
 
   submit() {

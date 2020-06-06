@@ -1,7 +1,7 @@
 {
   "name": "prodwarn",
   "displayName": "Production Environment Warning",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": false,
   "author": {
     "email": "kimnguyen.ict@gmail.com",

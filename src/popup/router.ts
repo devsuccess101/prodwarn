@@ -7,6 +7,7 @@ import DefaultLayout from './layouts/default.vue';
 import HomePage from './pages/index.vue';
 import AddSitePage from './pages/add-site.vue';
 import EditSitePage from './pages/edit-site.vue';
+import EditGroupPage from './pages/edit-group.vue';
 import AboutPage from './pages/about.vue';
 
 const routes = [
@@ -30,6 +31,13 @@ const routes = [
         component: EditSitePage,
         meta: {
           title: 'Edit site',
+        },
+      },
+      {
+        path: '/edit-group/:group',
+        component: EditGroupPage,
+        meta: {
+          title: 'Edit group',
         },
       },
       {
