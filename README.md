@@ -22,8 +22,6 @@ Let feel free to contribute or send us your feedback!
 
 ## Contribute
 
-If you want to contribute for us, please follow this guide:
-
 1. Clone source code from Github:
 
 ```bash
@@ -36,14 +34,12 @@ git clone git@github.com:kimyvgy/prodwarn.git
 yarn install
 ```
 
-3. Start dev mode, enjoin :D
-
-Build the source: 3 in 1 (popup, content-script, background-script)
+3. Start dev mode. Build the source: 3 in 1 (popup, content-script, background-script):
 
 ```bash
 yarn start
 ```
 
-Finnaly, turn of developer mode in your browser then load unpacked extension with path to `/prodwarn/dist` folder.
+After that, turn on developer mode in your browser then load unpacked extension with path to `/prodwarn/dist` folder.
 
 Enjoin! :D
