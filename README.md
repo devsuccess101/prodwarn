@@ -8,7 +8,7 @@ In A beautiful day, you accidentally test on the production system instead of th
 
 Let feel free to contribute or send us your feedback!
 
-## Supported browsers:
+## Supported browsers
 
 - [x] Firefox: https://addons.mozilla.org/en-US/firefox/addon/prodwarn-production-warning/
 - [ ] Opera: *Pending review*
@@ -28,24 +28,14 @@ Let feel free to contribute or send us your feedback!
 
 ## Contribute
 
-1. Clone source code from Github:
+- Let clone the source code from Github, install NPM dependencies then build with following commands:
 
 ```bash
 git clone git@github.com:kimyvgy/prodwarn.git
-```
 
-2. Install Node.js dependencies, we are using Yarn instead of NPM:
-
-```bash
 yarn install
-```
-
-3. Start dev mode. Build the source: 3 in 1 (popup, content-script, background-script):
-
-```bash
 yarn start
 ```
 
-After that, turn on developer mode in your browser then load unpacked extension with path to `/prodwarn/dist` folder.
-
-Enjoin! :laughing:
+- Turn on developer mode in your browser then load unpacked extension with path to `/prodwarn/dist` folder.
+- Enjoin! :laughing:
