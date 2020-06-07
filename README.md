@@ -8,17 +8,23 @@ In A beautiful day, you accidentally test on the production system instead of th
 
 Let feel free to contribute or send us your feedback!
 
+## Supported browsers:
+
+- [x] Firefox: https://addons.mozilla.org/en-US/firefox/addon/prodwarn-production-warning/
+- [ ] Opera: *Pending review*
+- [ ] Chrome: *Pending review*
+
 ## Features
 
 - [x] Add/Edit/Delete a protected site that should be shown the warning message
 - [x] Auto fill current site when adding protected site
 - [x] Manage protected sites with Group and Site name
 - [x] Search protected sites by name, host
-- [] Whitelist warning for page
-- [] Multiple strategy for warning:
+- [ ] Whitelist warning for page
+- [ ] Multiple strategy for warning:
   - [x] Float Message (default) (added)
-  - [] Dialog (WIP)
-  - [] Watermark
+  - [ ] Dialog (WIP)
+  - [ ] Watermark
 
 ## Contribute
 
@@ -42,4 +48,4 @@ yarn start
 
 After that, turn on developer mode in your browser then load unpacked extension with path to `/prodwarn/dist` folder.
 
-Enjoin! :D
+Enjoin! :laughing:
