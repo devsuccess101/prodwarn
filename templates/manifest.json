@@ -1,7 +1,7 @@
 {
-  "name": "Production Environment Warning",
-  "description": "Warning when you are in the production site",
-  "version": "0.1.0",
+  "name": "<name>",
+  "description": "<description>",
+  "version": "<version>",
   "manifest_version": 2,
 
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",

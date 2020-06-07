@@ -75,6 +75,8 @@ module.exports = {
         to: 'manifest.json',
         transform: () => {
           manifestTemplate.version = pkg.version;
+          manifestTemplate.name = pkg.displayName;
+          manifestTemplate.description = pkg.description;
 
           return Buffer.from(JSON.stringify(manifestTemplate, null, 2));
         },
