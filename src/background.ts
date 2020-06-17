@@ -21,13 +21,12 @@ const migrateDB = (): void => {
 
 // Initialize IndexedDB:
 chrome.runtime.onInstalled.addListener(migrateDB);
-chrome.runtime.onRestartRequired.addListener(migrateDB);
 
 // react to check production request from "main" content script:
 chrome.runtime.onMessage.addListener((message: IMessage, sender, sendResponse) => {
   if (!sender.tab) return undefined;
 
-  const host: string | null = _get(message, 'args.location.host');
+  const host: string | null = _get(message, 'args.host');
 
   if (!host || !whenCommand(CHECK_PRODUCTION, message)) {
     return sendResponse({ shouldWarning: false });

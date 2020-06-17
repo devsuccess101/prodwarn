@@ -11,7 +11,7 @@ interface CheckProdResponse {
 
 chrome.runtime.sendMessage({
   command: CHECK_PRODUCTION,
-  args: { location: window.location },
+  args: { host: window.location.host },
 }, (response: CheckProdResponse): void => {
   if (response.shouldWarning) {
     const element = document.createElement('div');
