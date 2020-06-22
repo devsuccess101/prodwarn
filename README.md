@@ -10,9 +10,11 @@ Let feel free to contribute or send us your feedback!
 
 ## Supported browsers
 
-- [x] Firefox: https://addons.mozilla.org/en-US/firefox/addon/prodwarn-production-warning/
-- [ ] Opera: *Pending review*
-- [ ] Chrome: *Pending review*
+- [x] Chrome: https://chrome.google.com/webstore/detail/prodwarn-production-warni/dgdfcekakoecdmmccembbgjeanedklic
+- [x] Firefox, Firefox Developer, Firefox Nighlightly: https://addons.mozilla.org/en-US/firefox/addon/prodwarn-production-warning/
+- [x] Opera Developer, Opera Beta, Opera Next: https://addons.opera.com/en/extensions/details/prodwarn-production-warning
+- [ ] Opera Stable: *Pending review*
+(you also can install Chrome version for Opera https://chrome.google.com/webstore/detail/prodwarn-production-warni/dgdfcekakoecdmmccembbgjeanedklic - auto update will not able in this case)
 
 ## Features
 
@@ -23,8 +25,8 @@ Let feel free to contribute or send us your feedback!
 - [ ] Whitelist warning for page
 - [ ] Multiple strategy for warning:
   - [x] Float Message (default) (added)
-  - [ ] Dialog (WIP)
-  - [ ] Watermark
+  - [ ] Dialog (help wanted)
+  - [ ] Container
 
 ## Contribute
 
