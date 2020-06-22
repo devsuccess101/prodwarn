@@ -3,7 +3,7 @@
   "displayName": "Prodwarn",
   "displayDevName": "Prodwarn (in development)",
   "description": "Display warning when using the production sites",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "private": false,
   "author": {
     "email": "kimnguyen.ict@gmail.com",
