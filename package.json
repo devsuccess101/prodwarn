@@ -1,6 +1,7 @@
 {
   "name": "prodwarn",
-  "displayName": "Prodwarn - Production Warning",
+  "displayName": "Prodwarn",
+  "displayDevName": "Prodwarn (in development)",
   "description": "Display warning when using the production sites",
   "version": "0.4.2",
   "private": false,

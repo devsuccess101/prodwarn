@@ -6,6 +6,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin'); // eslint-disable-line
 const pkg = require('../package.json');
 const manifestTemplate = require('../templates/manifest.json');
 
+const isDev = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   mode: process.env.NODE_ENV,
 
@@ -75,7 +77,7 @@ module.exports = {
         to: 'manifest.json',
         transform: () => {
           manifestTemplate.version = pkg.version;
-          manifestTemplate.name = pkg.displayName;
+          manifestTemplate.name = isDev ? pkg.displayDevName : pkg.displayName;
           manifestTemplate.description = pkg.description;
 
           return Buffer.from(JSON.stringify(manifestTemplate, null, 2));

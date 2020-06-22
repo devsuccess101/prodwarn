@@ -36,6 +36,9 @@ chrome.runtime.onMessage.addListener((message, _, sendResponse) => {
 
   return sendResponse({
     faviconURL: favicon ? favicon.getAttribute('href') : null,
-    location: window.location,
+    location: {
+      host: window.location.host,
+      origin: window.location.origin,
+    },
   });
 });
