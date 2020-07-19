@@ -21,7 +21,7 @@
     "core-js": "^3.4.3",
     "element-ui": "^2.13.0",
     "idb": "^5.0.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0",
