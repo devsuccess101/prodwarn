@@ -2,18 +2,19 @@
   <el-form ref="form" :model="form" :rules="rules" size="small">
     <el-form-item label="Site URL:" prop="url">
       <el-input
-        v-model.trim="form.url"
+        v-trim
+        v-model="form.url"
         placeholder="https://..."
         @change="onChangeURL"
       />
     </el-form-item>
 
     <el-form-item label="Site Name:" prop="name">
-      <el-input v-model.trim="form.name" />
+      <el-input v-trim v-model="form.name" />
     </el-form-item>
 
     <el-form-item label="Group:" prop="group">
-      <el-input v-model.trim="form.group" />
+      <el-input v-trim v-model="form.group" />
     </el-form-item>
 
     <el-form-item>
