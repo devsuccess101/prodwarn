@@ -5,7 +5,7 @@
     </el-form-item>
 
     <el-form-item label="New group:" prop="group">
-      <el-input v-model.trim="form.group" />
+      <el-input v-trim v-model="form.group" />
     </el-form-item>
 
     <el-form-item>
