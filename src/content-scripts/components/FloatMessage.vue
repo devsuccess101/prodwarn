@@ -40,7 +40,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class FloatMessage extends Vue {
-  message: string = '!!! Becareful, this is production site. Don\'t take any actions here, please!'
+  message: string = 'Be careful, this is a production site. Please don\'t take any actions here!'
 
   isMinimized: boolean = false;
 
