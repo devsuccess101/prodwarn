@@ -69,7 +69,7 @@ export default class SiteList extends Vue {
   }
 
   created() {
-    const cached = localStorage.getItem('expanedGroups');
+    const cached = localStorage.getItem('expandedGroups');
 
     if (cached) {
       this.activeNames = JSON.parse(cached);
@@ -77,7 +77,7 @@ export default class SiteList extends Vue {
   }
 
   onChange = (data: Array<string>) => {
-    localStorage.setItem('expanedGroups', JSON.stringify(data));
+    localStorage.setItem('expandedGroups', JSON.stringify(data));
   }
 }
 </script>
