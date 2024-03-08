@@ -28,7 +28,7 @@
     "vue-router": "^3.1.3"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.248",
+    "@types/chrome": "^0.0.263",
     "@types/lodash": "^4.14.153",
     "@vue/cli-plugin-babel": "^5.0.0",
     "@vue/cli-plugin-eslint": "^5.0.0",
